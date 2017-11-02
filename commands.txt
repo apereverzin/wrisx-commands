@@ -1,0 +1,5 @@
+1) Initialize blockchain:
+geth --datadir data init data/genesis.json
+
+2) Run geth node
+geth --datadir="data/" -nodiscover --networkid 704 --rpcapi="db,eth,net,web3,personal,web3" --rpccorsdomain "*" --rpc console
