@@ -1,0 +1,22 @@
+1) web3.js should be installed
+
+2) node
+
+Commands 3 - 4 are to resolve dependency on web3
+3) >Web3 = require('web3')
+4) >web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"))
+
+Commands 5 - 13 are to deploy the contract the local geth node
+5) >var abiText = fs.readFileSync('<location ofwrisx project>/wrisx/resources/public/contracts/build/WrisxToken.abi').toString()
+6) >var abi = JSON.parse(abiText)
+7) >var bytecodeText = fs.readFileSync('<location ofwrisx project>/wrisx/resources/public/contracts/build/WrisxToken.bin').toString()
+8) >var bytecode = '0x' + bytecodeText
+9) >var WrisxContract = web3.eth.contract(abi)
+10) >web3.personal.unlockAccount('<address>', '<password>')
+
+11) miner.start() in geth
+
+12) >deployedContract = WrisxContract.new('n', 't', 18, 10000, 1, {data: bytecode, from: '<address>', gas: 4700000})
+13) >contractInstance = WrisxContract.at(deployedContract.address)
+
+The value of deployedContract address should be copied to line 11 in wrisx.js in wrisx-web-api project
